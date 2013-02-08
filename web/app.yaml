@@ -1,0 +1,31 @@
+application: sample-gae-site2
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+
+- url: /js
+  static_dir: static/js
+  
+- url: /xml
+  static_dir: static/xml
+  
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /(.*\.(gif|png|jpg|swf|html))
+  static_files: static/\1
+  upload: static/(.*\.(gif|png|jpg|swf|html))
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: latest
